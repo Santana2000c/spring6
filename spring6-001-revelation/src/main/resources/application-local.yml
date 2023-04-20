@@ -1,0 +1,69 @@
+# 测试环境配置
+spring:
+  datasource:
+    dynamic:
+      # 配置默认数据库
+      primary: mysql
+      datasource:
+        # mysql配置
+        mysql:
+          url: jdbc:mysql://192.168.32.210:3306/ajxt_asset?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai&CatalogMeansCurrent=true
+          username: ajxt
+          password: Ajxt520!
+          driver-class-name: com.mysql.cj.jdbc.Driver
+        # clickhouse配置
+        clickhouse:
+          url: jdbc:clickhouse://192.168.32.210:8123/ajxt_asset?allowMultiQueries=true
+          username: default
+          password: ajxt520!
+          driver-class-name: ru.yandex.clickhouse.ClickHouseDriver
+  cache:
+    # 使用的缓存，可以选为redis或ehcache
+    type: redis
+  redis:
+    database: 2
+    host: 192.168.32.210
+    password:
+    port: 6379
+    lettuce: # 使用默认的lettuce连接池
+      shutdown-timeout: 5s # 关闭超时时间
+      pool:
+        max-active: -1 # 连接池最大连接数（使用负值表示没有限制）
+        max-idle: 16 # 连接池中的最大空闲连接
+        max-wait: -1ms  # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        min-idle: 0 # 连接池中的最小空闲连接
+    timeout: 10000
+
+abs:
+  pdf:
+    path: D:/pdf/
+  img:
+    path: D:/img/
+  shell:
+    path: D:/file_conversion.sh
+  catalogue:
+    path: D:/csv/
+  manager:
+    url: http://192.168.32.210:8888/d-am-manager/project/fi/common/sql/
+# token配置
+token:
+  # 令牌自定义标识
+  header: Authorization
+  # 令牌密钥
+  secret: gh-user-center
+  # 令牌有效期（默认30分钟）
+  expireTime: 60
+
+# ======xxl-job admin config
+xxl:
+  job:
+    admin:
+      addresses: http://192.168.32.143:18080/xxl-job-admin/
+    accessToken: ""
+    executor:
+      appname: abs-sit
+      address:
+      ip: 0.0.0.0
+      port: 9888
+      logpath: /home/ajxt/abs-service/xxl/logs/xxl-job-executor/abs-sit
+      logretentiondays: -1

@@ -1,0 +1,37 @@
+server:
+  port: 9192
+  domain: _
+  servlet:
+    context-path: /abs
+    encoding:
+      force: true
+      charset: "UTF-8"
+
+spring:
+  # 环境配置
+  profiles:
+    active: local
+  servlet:
+    multipart:
+      max-file-size: 500MB
+      max-request-size: 500MB
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss #格式化日期
+#mybatis-plus配置
+mybatis-plus:
+  mapper-locations: classpath:**/mapping/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+# 日志配置
+logging:
+  config: classpath:logback-spring.xml
+abs:
+  jwt:
+    ignore-urls: /**/springfox-swagger-ui/**;/**/swagger-ui.html;/**/swagger-resources/**;/**/swagger/**;/**/v2/api-docs;/user/login;/doc.html;/webjars/**/
+    expire-hour: 24
+    secret: abs_jwt_secret
+  asset-package:
+    signature:
+      template-file-path: C:\Users\ajxt\Desktop\assetPackageTemplate.docx
+      out-put-file-path: C:\Users\ajxt\Desktop\
