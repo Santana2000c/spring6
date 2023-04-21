@@ -25,4 +25,5 @@ public class DateLoopVo {
 
     public DateLoopVo() {
     }
+    
 }
