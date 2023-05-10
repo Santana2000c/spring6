@@ -1,4 +1,4 @@
-package com.powernode.spring6.bean;
+package com.powernode.spring6.vo;
 
 /**
  * @author wangguangtao

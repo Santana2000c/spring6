@@ -1,6 +1,6 @@
 package T;
 
-import com.powernode.spring6.bean.DateLoopVo;
+import com.powernode.spring6.vo.DateLoopVo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
